@@ -1,2 +1,1 @@
-PTF_Models/*.rds filter=lfs diff=lfs merge=lfs -text
 ^f.*.rds$ filter=lfs diff=lfs merge=lfs -text
