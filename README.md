@@ -1,9 +1,32 @@
-# soil_ksat
+# Saturated Hydraulic Conductivity Pedotransfer
 
 [![Lab Website](https://github.com/saraya209/soil_ksat/blob/master/imgs/ucmerced_25.png)](http://soilphysics.ucmerced.edu "Soil Physics @ UC Merced")
 [![Twitter](https://github.com/saraya209/soil_ksat/blob/master/imgs/Twitter_Social_Icon_Square_Color_33.png)](https://twitter.com/SamuelA209 "@SamuelA209")
 
-This is a repository for the scripts, data and final models used in Araya and Ghezzehei (2019) paper. The report of the USKSAT data preparation procedure is found [**here**](./USKsat_Data_Prep.md), and report of the partial effect analysis and figures is found [**here**](./Structure_Partial_Effect.md).
+This repository contains machine learning based Pedotransfer models that predict saturated hydraulic conductivity (K<sub>s</sub>) including the [training data](./Data/USKSAT_OpenRefined.csv) and all R scripts used to build the models. Detailed descriptions on this work will be available in Araya and Ghezzehei (2019 - under review) paper.
+
+Summaries of data preparation procedures for the machine learning from the USKSAT data is found [**here**](./USKsat_Data_Prep.md). Summary report of analysis we did on the partial effect of bulk density and organic carbon concentration on K<sub>s</sub> is found [**here**](./Structure_Partial_Effect.md).
+
+## Running The Pedotransfer App
+![](https://github.com/saraya209/soil_ksat/blob/master/imgs/GUI.png)
+- Pedotransfer App
+  - I have developed an app with GUI based on shiny. To run the app locally is easy with RStudio editor:
+    1. Download the `ptfapp` folder and all it's contents (Optional: if you prefer not to download all of the models, download only the ones you want from `ptf/Models` folder.)
+    2. Open the RStudio project file `ptfapp.Rproj` in your machine. Open the `ui.R` script in your RStudio editor; RStudio will recognize the *Shiny* script and provide a **Run App** button (at the top of the editor).
+    3. Before running the app for the first time, you may need to install the required R packages by running the following codes in the R console.
+    ```r
+    # Shiny packages
+    install.packages("shiny")
+    install.packages("shinyjs")
+    install.packages("htmltools")
+    # Machine learning related packages
+    install.packages("caret")
+    install.packages("gbm")
+    # Table manipulation packages
+    install.packages("DT")
+    install.packages("dplyr")
+    install.packages("readr")
+    ```
 
 ## Repository Contents
 - R Scripts
@@ -20,8 +43,8 @@ This is a repository for the scripts, data and final models used in Araya and Gh
   - Training and Testing subsets of Cleaned USKSAT (*USKsatTrain* and *USKsatTest* files, same files with *_dim* include sample dimension variable).
   - Pre-processing data used to center and scale data created by `preProcess` function from [caret](https://cran.r-project.org/web/packages/caret/index.html) package ([USKsat_preProc.rds](./Data/USKsat_preProc.rds)).
 
-- PTF Models
-  - Contains all hierarchy models, and the pre-processing data. Contact authors to acquire models that were too large to host here.
+- [Pedotransfer Models](./ptfapp/Models)
+  - All hierarchy models and the pre-processing data. Contact authors for other models not hosted here due to file size.
 
 - Functions
   - [Functions_TextureRelated.R](./Functions/Functions_TextureRelated.R): Set of functions to assign textural class, calculate percentile sizes and complexed organic carbon.
@@ -29,10 +52,10 @@ This is a repository for the scripts, data and final models used in Araya and Gh
   - [ModelPerformanceFunction.R](./Functions/ModelPerformanceFunction.R): Function to calculate model performance.
   - [Function_Predict.R](./Functions/Function_Predict.R): Function to predict Ksat using our PTF models.
 
-## How To Use Models
-You can run the models to predict the saturated hydraulic conductivity  of soils (`Ks`) using the `Predict_Ksat.R` script. To run the models in your machine:
+## Running Models Using Script
+You can run the models to predict the saturated hydraulic conductivity  of soils using the `Predict_Ksat.R` script. To run the models in your machine:
 1. Download at least these five items (save them in the same directory, check scripts to fix file locatoins in your machine.):
-  - a model of your choice and the [`USKsat_preProc.rds`](./Data/USKsat_preProc.rds) file from [PTF_Models](./PTF_Models) folder,
+  - a model of your choice and the [`USKsat_preProc.rds`](./Data/USKsat_preProc.rds) file from [ptfapp/Models](./ptfapp/Models) folder,
   - the [`Soil_Variable_Template.csv`](./Soil_Variable_Template.csv) file,
   - the [`Predict_Ksat.R`](./Predict_Ksat.R) script, and
   - the [`Function_Predict.R`](./Functions/Function_Predict.R) file from the [Functions](./Functions) folder.

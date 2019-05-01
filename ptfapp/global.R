@@ -21,8 +21,8 @@ predictor.rename <- data.frame(input.name = c("Clay","Silt", "Sand","VCOS", "COS
                                pred.name = c("rClay","rSilt", "rSand","rVCOS", "rCOS","rMS","rFS","rVFS", "Db", "logOC"))
 
 # load scaling means and standard deviations
-scale_mean <- readRDS(file.path("Models","scaling_means.rds"))
-scale_sd <- readRDS(file.path("Models","scaling_sds.rds"))
+scale_mean <- readRDS(file.path("Models","scaling_means"))
+scale_sd <- readRDS(file.path("Models","scaling_sds"))
 
 #Scale and center predictors function
 scale_fun <- function(val, mean, std){
