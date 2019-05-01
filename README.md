@@ -7,26 +7,26 @@ This repository contains machine learning based Pedotransfer models that predict
 
 Summaries of data preparation procedures for the machine learning from the USKSAT data is found [**here**](./USKsat_Data_Prep.md). Summary report of analysis we did on the partial effect of bulk density and organic carbon concentration on K<sub>s</sub> is found [**here**](./Structure_Partial_Effect.md).
 
-## Running The Pedotransfer App
+## Running Pedotransfer App
 ![](https://github.com/saraya209/soil_ksat/blob/master/imgs/GUI.png)
-- Pedotransfer App
-  - I have developed an app with GUI based on shiny. To run the app locally is easy with RStudio editor:
-    1. Download the `ptfapp` folder and all it's contents (Optional: if you prefer not to download all of the models, download only the ones you want from `ptf/Models` folder.)
-    2. Open the RStudio project file `ptfapp.Rproj` in your machine. Open the `ui.R` script in your RStudio editor; RStudio will recognize the *Shiny* script and provide a **Run App** button (at the top of the editor).
-    3. Before running the app for the first time, you may need to install the required R packages by running the following codes in the R console.
-    ```r
-    # Shiny packages
-    install.packages("shiny")
-    install.packages("shinyjs")
-    install.packages("htmltools")
-    # Machine learning related packages
-    install.packages("caret")
-    install.packages("gbm")
-    # Table manipulation packages
-    install.packages("DT")
-    install.packages("dplyr")
-    install.packages("readr")
-    ```
+
+I have developed an app with GUI based on shiny. To run the app locally is easy with RStudio editor:
+1. Download the `ptfapp` folder and all it's contents (Optional: if you prefer not to download all of the models, download only the ones you want from `ptf/Models` folder.)
+2. Open the RStudio project file `ptfapp.Rproj` in your machine. Open the `ui.R` script in your RStudio editor; RStudio will recognize the *Shiny* script and provide a **Run App** button (at the top of the editor).
+3. Before running the app for the first time, you may need to install the required R packages by running the following codes in the R console.
+```r
+# Shiny packages
+install.packages("shiny")
+install.packages("shinyjs")
+install.packages("htmltools")
+# Machine learning related packages
+install.packages("caret")
+install.packages("gbm")
+# Table manipulation packages
+install.packages("DT")
+install.packages("dplyr")
+install.packages("readr")
+```
 
 ## Repository Contents
 - R Scripts
