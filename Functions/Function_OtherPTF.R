@@ -7,10 +7,8 @@
 
 ## Samuel N. Araya (samuel.negusse@gmail.com)
 
-
-PTF_ks <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
-  # Calculates saturated hydraulic conductivity from Ghanbarian et al. (2015) SHC2 equation
-  # and seven other models cited in Ghanbarian et al. (2017).
+PTF_Ghenbarian_SHC2 <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
+  # Calculates saturated hydraulic conductivity from Ghanbarian et al. (2015) SHC2 equation.
   # 
   # Args:
   #   sand,clay,...: Ratio or percent of particles of size sand and clay
@@ -21,7 +19,7 @@ PTF_ks <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
   #   percent: Whether the size fractions are in ratio (0-1) or in percentages (0-100).
   #
   # Returns:
-  #   Named list with Saturated hydraulic conducivity [(cm/day)] from all models and 
+  #   Named list with Saturated hydraulic conducivity [(cm/day)] and 
   #     patterns matched from Ghanbarian et al (2015)
   #
   # Convert ratio to percent
@@ -34,7 +32,7 @@ PTF_ks <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
   ## Calculate geometric mean diameter, d_g (mm), and 
   ## geometric standard deviation of mean particle diameter s_g (mm) (Shirazi and Boersma, 1984)
   a <- 0.01 * ( (clay * log(0.001)) + (silt * log(0.026)) +(sand * log(1.025)) )
-
+  
   b <- sqrt( 0.01 * ( (clay * log(0.001)^2) + (silt * log(0.026)^2) + (sand * log(1.025)^2) )  - a^2)
   
   d_g <- exp(a)
@@ -56,55 +54,55 @@ PTF_ks <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
   if (d_g >= 0.495 & d_g < 0.74 & clay < 15.8 & s_g >= 1.55 & s_g < 6.96 & silt >= 0.2 
       & silt < 20.3 & sand >= 74.4 & sand < 99.1 & bd >= 1.23 & bd < 1.6 ){ 
     pattern = append(pattern,1) 
-    }
+  }
   if (sand >= 49.6 & sand < 74.4 & L >= 2.5 & L < 36.9 & dia >= 3.2 & dia < 7.5){ 
-      pattern = append(pattern,2)  
-    }
+    pattern = append(pattern,2)  
+  }
   if (silt >= 40.5 & silt < 60.6 & d_g >= 0.004 & d_g < 0.25 
-              & s_g >= 6.96 & s_g < 12.38 & bd >= 1.23 & bd < 1.6 ){ 
-      pattern = append(pattern,3)  
-    }
+      & s_g >= 6.96 & s_g < 12.38 & bd >= 1.23 & bd < 1.6 ){ 
+    pattern = append(pattern,3)  
+  }
   if (silt >= 0.2 & silt < 20.3 & clay < 15.8 & s_g >= 1.55 & s_g < 6.96 
-              & sand >= 74.4 & sand < 99.1 ){ 
-      pattern = append(pattern,4)  
-    }
+      & sand >= 74.4 & sand < 99.1 ){ 
+    pattern = append(pattern,4)  
+  }
   if (silt >= 0.2 & silt < 20.3 & d_g >= 0.004 & d_g < 0.25 & L >= 2.5 & L < 36.9){ 
-      pattern = append(pattern,5)  
-    }
+    pattern = append(pattern,5)  
+  }
   if (s_g >= 6.96 & s_g < 12.38 & clay < 15.8 & L >= 2.5 & L < 36.9 
-              & dia >= 3.2 & dia < 7.5 & silt >= 20.3 & silt < 40.5 
-              & sand >= 49.6 & sand < 74.4 & d_g >= 0.004 & d_g < 0.25 ){
-      pattern = append(pattern,6)  
-    }
+      & dia >= 3.2 & dia < 7.5 & silt >= 20.3 & silt < 40.5 
+      & sand >= 49.6 & sand < 74.4 & d_g >= 0.004 & d_g < 0.25 ){
+    pattern = append(pattern,6)  
+  }
   if (silt >= 60.6 & silt < 80.7 & L >= 2.5 & L < 36.9 & bd >= 1.23 & bd < 1.6 
-                & d_g >= 0.004 & d_g < 0.25 & sand >= 0.1 & sand < 24.9 ){ 
-      pattern = append(pattern,7) 
-    }
+      & d_g >= 0.004 & d_g < 0.25 & sand >= 0.1 & sand < 24.9 ){ 
+    pattern = append(pattern,7) 
+  }
   if (sand >= 49.6 & sand < 74.4 & L >= 2.5 & L < 36.9 & silt >= 20.3 
-              & silt < 40.5 & dia >= 3.2 & dia < 7.5){ 
-      pattern = append(pattern,8)  
-    }
+      & silt < 40.5 & dia >= 3.2 & dia < 7.5){ 
+    pattern = append(pattern,8)  
+  }
   if (clay >= 15.8 & clay < 31.5 & L >= 2.5 & L < 36.9 
-              & d_g >= 0.004 & d_g < 0.25 & bd >= 1.23 & bd < 1.6 ){ 
-      pattern = append(pattern,9)  
-    }
+      & d_g >= 0.004 & d_g < 0.25 & bd >= 1.23 & bd < 1.6 ){ 
+    pattern = append(pattern,9)  
+  }
   if (sand >= 49.6 & sand < 74.4 & L >= 2.5 & L < 36.9 & bd >= 1.23 
-              & bd < 1.6 & dia >= 3.2 & dia < 7.5 ){ 
-      pattern = append(pattern,10)  
-    }
+      & bd < 1.6 & dia >= 3.2 & dia < 7.5 ){ 
+    pattern = append(pattern,10)  
+  }
   if (silt >= 20.3 & silt < 40.5 & L >= 2.5 & L < 36.9 & clay < 15.8 
-              & sand >= 49.6 & sand < 74.4){ 
-      pattern = append(pattern,11)  
-    }
+      & sand >= 49.6 & sand < 74.4){ 
+    pattern = append(pattern,11)  
+  }
   if (s_g >= 1.55 & s_g < 6.96 & clay < 15.8){ 
-      pattern = append(pattern,12)  
-    }
+    pattern = append(pattern,12)  
+  }
   if (clay < 15.8 & d_g >= 0.004 & d_g < 0.25 & L >= 2.5 & L < 36.9 ){ 
-      pattern = append(pattern,13)  
-    }
+    pattern = append(pattern,13)  
+  }
   if (clay < 15.8 & L >= 2.5 & L < 36.9){ 
-      pattern = append(pattern,14)  
-    }
+    pattern = append(pattern,14)  
+  }
   #if (is.null(pattern)){ # MATCH BASELINE MODEL TO ALL!
   pattern = 0 
   #   }
@@ -156,6 +154,51 @@ PTF_ks <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
   # convert log_e(cm/day) to cm/day
   K1 = exp(K1)
   
+  
+  #
+  return(list(Ghanbarian2015Pattern = paste(pattern, collapse = ", "),
+              Ghanbarian2015SHC2 = K1) )
+}
+PTF_ks <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
+  # Calculates saturated hydraulic conductivity from Ghanbarian et al. (2015) SHC2 equation
+  # and seven other models cited in Ghanbarian et al. (2017).
+  # 
+  # Args:
+  #   sand,clay,...: Ratio or percent of particles of size sand and clay
+  #   bd: bulk density of soil (g/cm^3)
+  #   oc: organic carbon content (%)
+  #   l: sample length (cm)
+  #   d: sample diameter (cm)
+  #   percent: Whether the size fractions are in ratio (0-1) or in percentages (0-100).
+  #
+  # Returns:
+  #   Named list with Saturated hydraulic conducivity [(cm/day)] from all models and 
+  #     patterns matched from Ghanbarian et al (2015)
+  #
+  # Convert ratio to percent
+  if(percent == FALSE){
+    sand = 100*sand
+    clay = 100*clay
+  }
+  silt = 100-sand-clay  # Calculate silt percent
+  
+  ## Calculate geometric mean diameter, d_g (mm), and 
+  ## geometric standard deviation of mean particle diameter s_g (mm) (Shirazi and Boersma, 1984)
+  a <- 0.01 * ( (clay * log(0.001)) + (silt * log(0.026)) +(sand * log(1.025)) )
+
+  b <- sqrt( 0.01 * ( (clay * log(0.001)^2) + (silt * log(0.026)^2) + (sand * log(1.025)^2) )  - a^2)
+  
+  d_g <- exp(a)
+  s_g <- exp(b)
+  
+  # Calculate porosity from bulk density and particle density = 2.65
+  phi <- 1 - (bd / 2.65)
+  #
+  ### Method 1: Ghanbarian et al (2015) SHC2 model
+  
+  K1_pattern = PTF_Ghenbarian_SHC2(sand, clay, bd, oc, L, dia)
+  K1 = K1_pattern[[2]]
+  pattern = K1_pattern[[1]]
   
   ### Method 2: Brakensiek et al. (1984) model (verified)
   K2 = exp(19.52348 * phi
@@ -252,7 +295,7 @@ PTF_ks <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
           
   
   #
-  return(list(Ghanbarian2015Pattern = paste(pattern, collapse = ", "),
+  return(list(Ghanbarian2015Pattern = pattern,
               Ghanbarian2015SHC2 = K1,
               Brakensiek1984 = K2,
               CampbellShiozawa1994 = K3,
