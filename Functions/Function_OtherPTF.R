@@ -1,9 +1,7 @@
 ## Code for estimating saturated hydraulic conductivity (Ksat) 
-## using nine PTFs:
-##	- the Ghanbarian et al. (2015) Contrast Pattern Assisted Regression (CPXR) model and 
+## using several PTFs including
+### the Ghanbarian et al. (2015) Contrast Pattern Assisted Regression (CPXR) model and 
 ## seven other models given in Ghanbarian et al. (2017) Table 2.
-##	- Nemes (2005)
-## Some of the codes are based on: 
 ## http://dx.doi.org/10.1016/j.catena.2016.10.015.
 ## http://www.knoesis.org/resources/researchers/vahid/behzad.html
 
@@ -47,13 +45,14 @@ PTF_ks <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
   #
   ### Method 1: Ghanbarian et al (2015) SHC2 model
   # Steps:
-  #   1. Match all relevant patterns (pattern == 0 if non match )
-  #   2. Ks estimated using all local models that match pattern (or base model if non match)
+  #   1. Match all relevant patterns (pattern == 0 if SHOULD MATCH ALL )
+  #   2. Ks estimated using all local models that match pattern AND base model (i.e.epattern = 0)
   #   3. Average Ks predictions for the final prediction (geometric mean)
   
   # 1. Match pattern
   # Initialize `pattern` as empty vector
   pattern = c()
+  
   if (d_g >= 0.495 & d_g < 0.74 & clay < 15.8 & s_g >= 1.55 & s_g < 6.96 & silt >= 0.2 
       & silt < 20.3 & sand >= 74.4 & sand < 99.1 & bd >= 1.23 & bd < 1.6 ){ 
     pattern = append(pattern,1) 
@@ -106,9 +105,9 @@ PTF_ks <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
   if (clay < 15.8 & L >= 2.5 & L < 36.9){ 
       pattern = append(pattern,14)  
     }
-  if (is.null(pattern)){
-      pattern = 0 
-      }
+  #if (is.null(pattern)){ # MATCH BASELINE MODEL TO ALL!
+  pattern = 0 
+  #   }
   
   #2. Predict using local model corresponding to each pattern
   # initialize all pattern predictions to NA
@@ -145,6 +144,14 @@ PTF_ks <- function(sand, clay, bd, oc, L, dia, percent = TRUE){
     K114 = -204.8986 + 2.1700 * sand + 2.1471 * silt + 2.3956 * clay + 2.5379 * d_g - 0.3229 * s_g - 3.7845 * bd - 0.1985 * dia + 0.0861 * L}
   # 3. Average predictions where they exist.
   vK1 = c(K10, K11, K12, K13, K14, K15, K16, K17, K18, K19, K110, K111, K112, K113, K114)
+  # ##****************************
+  # # !!Weighted average by ARR?
+  # vwts = c(7, 1.4726, 2.2554, 3.0696, 0.9416, 6.5948, 1.6394, 3.3942, 2.051, 2.3825, 4.276, 0.8731, 0.8721, 0.5489, 0.3524)
+  # # !!Or Weighted by SRR?
+  # wts = c(100,50.0705, 69.9201, 52.1833, 64.9766, 72.5438, 21.3132, 101.828, 55.3772, 73.8582, 72.692, 27.9411, 68.0252, 29.6417, 44.4141)
+  # K1 = weighted.mean(vK1, vwts, na.rm = T) 
+  ## *****************************
+  
   K1 = mean(vK1, na.rm = T)
   # convert log_e(cm/day) to cm/day
   K1 = exp(K1)
