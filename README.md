@@ -3,7 +3,7 @@
 [![Lab Website](https://github.com/saraya209/soil_ksat/blob/master/imgs/ucmerced_25.png)](http://soilphysics.ucmerced.edu "Soil Physics @ UC Merced")
 [![Twitter](https://github.com/saraya209/soil_ksat/blob/master/imgs/Twitter_Social_Icon_Square_Color_33.png)](https://twitter.com/SamuelA209 "@SamuelA209")
 
-This repository contains machine learning based Pedotransfer models that predict saturated hydraulic conductivity (K<sub>s</sub>) including the [training data](./Data/USKSAT_OpenRefined.csv) and all R scripts used to build the models. Detailed description of this work are available in our paper: [Araya and Ghezzehei (2019)](https://doi.org/10.1029/2018WR024357).
+This repository contains machine learning based Pedotransfer models that predict saturated hydraulic conductivity (K<sub>s</sub>) including the [training data](./Data/USKSAT_OpenRefined.csv) and all R scripts used to build the models. Detailed description of this work are available in our paper: <a href="https://doi.org/10.1029/2018WR024357" target="_blank">Araya and Ghezzehei (2019)</a>.
 
 Summaries of data preparation procedures for the machine learning from the USKSAT data is found [**here**](./USKsat_Data_Prep.md). Summary report of analysis we did on the partial effect of bulk density and organic carbon concentration on K<sub>s</sub> is found [**here**](./Structure_Partial_Effect.md).
 
