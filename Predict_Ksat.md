@@ -1,15 +1,4 @@
-
-
-```r
-# ---
-#   title: "Predict_Ksat.R Run"
-# author: "Sammuel Araya"
-# output:
-#   html_document:
-#   keep_md: yes
-# ---
-```
-
+# Predict_Ksat.R Run
 The code is written assuming the following directory structure:
 
 
