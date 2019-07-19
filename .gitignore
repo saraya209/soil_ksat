@@ -3,4 +3,5 @@
 .Ruserdata
 .Rproj.user
 .Rproj
-ptfapp/Models/
+ptfapp/Models/fGBM*
+ptfapp/Models/RF*
