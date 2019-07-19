@@ -44,7 +44,7 @@ install.packages("readr")
   - Pre-processing data used to center and scale data created by `preProcess` function from [caret](https://cran.r-project.org/web/packages/caret/index.html) package ([USKsat_preProc.rds](./Data/USKsat_preProc.rds)).
 
 - [Pedotransfer Models](./ptfapp/Models)
-  - All hierarchy models and the pre-processing data. **GitHub has restricted access to some of the models in the `ptf/Models` folder due to their size. Please download the models from my [GoogleDrive folder](https://drive.google.com/drive/folders/1GidQH1UFWRuPCYK8wccFjPcx-rQqENbR?usp=sharing).** 
+  - All hierarchy models and the pre-processing data. **GitHub has restricted access to some of the models in the `ptf/Models` folder due to their size. Please download the models from my [GoogleDrive folder](https://drive.google.com/drive/folders/1GidQH1UFWRuPCYK8wccFjPcx-rQqENbR?usp=sharing).**
 
 - Functions
   - [Functions_TextureRelated.R](./Functions/Functions_TextureRelated.R): Set of functions to assign textural class, calculate percentile sizes and complexed organic carbon.
@@ -53,14 +53,14 @@ install.packages("readr")
   - [Function_Predict.R](./Functions/Function_Predict.R): Function to predict Ksat using our PTF models.
 
 ## Running Models Using Script
-You can run the models to predict the saturated hydraulic conductivity  of soils using the `Predict_Ksat.R` script. To run the models in your machine:
+You can run the models to predict the saturated hydraulic conductivity  of soils using the `Predict_Ksat.R` script (See a sample run of the `Predict_Ksat.R` [**here**](./Predict_Ksat.md) ). To run the models in your machine:
 1. Download at least these five items (save them in the same directory, check scripts to fix file locatoins in your machine.):
-  - a model of your choice and the [`USKsat_preProc.rds`](./Data/USKsat_preProc.rds) file from [ptfapp/Models](./ptfapp/Models) folder,
+  - a model of your choice and the [`USKsat_preProc.rds`](./Data/USKsat_preProc.rds) file from [ptfapp/Models](./ptfapp/Models) folder (**Now hosted on [this GoogleDrive folder](https://drive.google.com/drive/folders/1GidQH1UFWRuPCYK8wccFjPcx-rQqENbR?usp=sharing)**),
   - the [`Soil_Variable_Template.csv`](./Soil_Variable_Template.csv) file,
   - the [`Predict_Ksat.R`](./Predict_Ksat.R) script, and
   - the [`Function_Predict.R`](./Functions/Function_Predict.R) file from the [Functions](./Functions) folder.
 2. Fill and save the `Soil_Variables_Template.csv` table with your soil variables.
-3. Modify lines 6 to 10 in the  `Predict_Ksat.R` as needed.
+3. Modify lines 22 to 27 in the  `Predict_Ksat.R` as needed.
 
 For the prediction to run on your machine, you must have the `caret` package and either `gbm` or `randomForest` packages installed depending on whether you are using the BRT or the RF models. You should be able to install the packages prior to running `Predict_Ksat.R` as follows.
 ```r
@@ -68,6 +68,8 @@ install.packages('caret', repos = 'https://cran.r-project.org')
 install.packages('gbm', repos = 'https://cran.r-project.org')
 install.packages('randomForest', repos = 'https://cran.r-project.org')
 ```
+
+
 
 ## License
 This work is licensed under a Creative Commons Attribution 4.0 International License. - see the [LICENSE.md](LICENSE.md) file for details

@@ -14,7 +14,7 @@ PredictFunction <- function(i.model = ptf_model,
   # Returns:
   #   A list containing
   #   1. Data frame of predictions. If Alg= "RF" it returns the statistical
-  #         summary of predictoin including mean
+  #         summary of prediction including mean
   #   2. List of predictors used in model(useful to verify model hierarchy used)  
   #
   #
@@ -38,8 +38,12 @@ PredictFunction <- function(i.model = ptf_model,
     Ks_predicted <- t(sapply(Ks_predicted, summary))
     Ks_predicted <- data.frame(Ks_predicted)
   }else if(Alg=="BRT"){
+    # Get number of trees from model
+    n_trees <- i.model$n.trees
     #predict
-    Ks_predicted  <- predict(i.model, newdata = in_sub.dt)
+    Ks_predicted  <- predict(i.model, 
+                             newdata = in_sub.dt,
+                             n.trees = n_trees)
     Ks_predicted <- data.frame(Ks_predicted)
     
   }

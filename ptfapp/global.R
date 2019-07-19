@@ -2,12 +2,19 @@
 predicted_dt <- NULL
 # load model names
 #model.names <- list.files(pattern="^f.*.rds$")
-model.names <- list("BRT 3-0" = "fGBM_3_1.rds",
-                    "BRT 3-1" = "fGBM_3_2.rds",
-                    "BRT 3-2" = "fGBM_3_3.rds", 
-                    "BRT 7-0" = "fGBM_7_1.rds", 
-                    "BRT 7-1" = "fGBM_7_2.rds", 
-                    "BRT 7-2" = "fGBM_7_3.rds")
+# Old Model file naming
+# model.names <- list("BRT 3-0" = "fGBM_3_1.rds",
+#                     "BRT 3-1" = "fGBM_3_2.rds",
+#                     "BRT 3-2" = "fGBM_3_3.rds", 
+#                     "BRT 7-0" = "fGBM_7_1.rds", 
+#                     "BRT 7-1" = "fGBM_7_2.rds", 
+#                     "BRT 7-2" = "fGBM_7_3.rds")
+model.names <- list("BRT 3-0" = "fGBM_30.rds",
+                    "BRT 3-1" = "fGBM_31.rds",
+                    "BRT 3-2" = "fGBM_32.rds", 
+                    "BRT 7-0" = "fGBM_70.rds", 
+                    "BRT 7-1" = "fGBM_71.rds", 
+                    "BRT 7-2" = "fGBM_72.rds")
 model.names.display <- c("BRT 3-0", "BRT 3-1", "BRT 3-2",
                          "BRT 7-0", "BRT 7-1", "BRT 7-2")
 model.inputs <- list("BRT 3-0" = c("Clay","Silt","Sand"),
