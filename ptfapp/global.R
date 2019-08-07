@@ -104,7 +104,8 @@ run_ptf_fun <- function(ptf_model, dt){
     Predicted_Ks <- predict(sel.m, 
                        newdata = dt,
                        n.trees = sel.m$n.trees)
-    
+    # Convert units from log_e(cm/hr) to cm/day
+	Predicted_Ks <- exp(Predicted_Ks) * 24
     pred.dt <- cbind(in.dt, Predicted_Ks)
     # Generate Warnings 
     # ************** BUG: first condition gets ignored!
@@ -184,7 +185,8 @@ s_run_ptf_fun <- function(ptf_model, dt){
     Predicted_Ks <- predict(sel.m, 
                             newdata = dt,
                             n.trees = sel.m$n.trees)
-    
+    # Convert units from log_e(cm/hr) to cm/day
+	Predicted_Ks <- exp(Predicted_Ks) * 24
     pred.dt <- cbind(in.dt, Predicted_Ks)
     # Generate Warnings 
     # ************** BUG: first condition gets ignored!

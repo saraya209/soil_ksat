@@ -127,7 +127,7 @@ ui <- fluidPage(
  
     fluidRow(
       column(width = 12,
-             h3("Model Prediction"),
+             h3("Model Prediction [cm/day]"),
              DT::dataTableOutput("in_out_table"),
              #tableOutput("in_out_table")
              DT::dataTableOutput("single_in_out_table")
