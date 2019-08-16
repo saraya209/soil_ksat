@@ -11,7 +11,7 @@ Summaries of data preparation procedures for the machine learning from the USKSA
 ![](https://github.com/saraya209/soil_ksat/blob/master/imgs/GUI.png)
 
 I have developed an app with GUI based on shiny. To run the app locally is easy with RStudio editor:
-1. Download the `ptfapp` folder and all it's contents. **GitHub has restricted access to some of the models in the `ptf/Models` folder due to their size. Please download the models from my [GoogleDrive folder](https://drive.google.com/drive/folders/1GidQH1UFWRuPCYK8wccFjPcx-rQqENbR?usp=sharing).** (If you prefer not to download all of the models, download only the ones you want from.)
+1. Download the `ptfapp` folder and all it's contents. **Download the models from [UC Merced Dash](https://doi.org/10.6071/M3T95H) and save in`ptf/Models` folder.** (If you prefer not to download all of the models, download only the ones you want from.)
 2. Open the RStudio project file `ptfapp.Rproj` in your machine. Open the `ui.R` script in your RStudio editor; RStudio will recognize the *Shiny* script and provide a **Run App** button (at the top of the editor).
 3. Before running the app for the first time, you may need to install the required R packages by running the following codes in the R console.
 ```r
@@ -44,7 +44,7 @@ install.packages("readr")
   - Pre-processing data used to center and scale data created by `preProcess` function from [caret](https://cran.r-project.org/web/packages/caret/index.html) package ([USKsat_preProc.rds](./Data/USKsat_preProc.rds)).
 
 - [Pedotransfer Models](./ptfapp/Models)
-  - All hierarchy models and the pre-processing data. **GitHub has restricted access to some of the models in the `ptf/Models` folder due to their size. Please download the models from my [GoogleDrive folder](https://drive.google.com/drive/folders/1GidQH1UFWRuPCYK8wccFjPcx-rQqENbR?usp=sharing).**
+  - All hierarchy models and the pre-processing data. **Download the models from [UC Merced Dash](https://doi.org/10.6071/M3T95H). Models were too large for GitHub.**
 
 - Functions
   - [Functions_TextureRelated.R](./Functions/Functions_TextureRelated.R): Set of functions to assign textural class, calculate percentile sizes and complexed organic carbon.
@@ -55,7 +55,7 @@ install.packages("readr")
 ## Running Models Using Script
 You can run the models to predict the saturated hydraulic conductivity  of soils using the `Predict_Ksat.R` script (See a sample run of the `Predict_Ksat.R` [**here**](./Predict_Ksat.md) ). To run the models in your machine:
 1. Download at least these five items (save them in the same directory, check scripts to fix file locatoins in your machine.):
-  - a model of your choice and the [`USKsat_preProc.rds`](./Data/USKsat_preProc.rds) file from [ptfapp/Models](./ptfapp/Models) folder (**Now hosted on [this GoogleDrive folder](https://drive.google.com/drive/folders/1GidQH1UFWRuPCYK8wccFjPcx-rQqENbR?usp=sharing)**),
+  - a model of your choice and the [`USKsat_preProc.rds`](./Data/USKsat_preProc.rds) file from **[UC Merced Dash](https://doi.org/10.6071/M3T95H)**,
   - the [`Soil_Variable_Template.csv`](./Soil_Variable_Template.csv) file,
   - the [`Predict_Ksat.R`](./Predict_Ksat.R) script, and
   - the [`Function_Predict.R`](./Functions/Function_Predict.R) file from the [Functions](./Functions) folder.
