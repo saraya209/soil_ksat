@@ -11,7 +11,7 @@ Summaries of data preparation procedures for the machine learning from the USKSA
 ![](https://github.com/saraya209/soil_ksat/blob/master/imgs/GUI.png)
 
 I have developed an app with GUI based on shiny. To run the app locally is easy with RStudio editor:
-1. Download the `ptfapp` folder and all it's contents. **Download the models from [This Google Drive link](https://drive.google.com/open?id=1dfkrvsmCL_tUm7QraovWXvaG0nQ3gULf)**
+1. Download the `ptfapp` folder and all it's contents. **Download the models from [this Google Drive link](https://drive.google.com/open?id=1dfkrvsmCL_tUm7QraovWXvaG0nQ3gULf)**
 2. Open the RStudio project file `ptfapp.Rproj` in your machine. 
 3. Open the `ui.R` script in your RStudio editor; RStudio will recognize the *Shiny* script and provide a **Run App** button (at the top of the editor).
 4. Clicking **Run App** button. Before running the app for the first time, you may need to install the required R packages by running the following codes in the R console.
@@ -56,7 +56,7 @@ install.packages("readr")
 ## Running Models Using Script
 You can run the models to predict the saturated hydraulic conductivity  of soils using the `Predict_Ksat.R` script (See a sample run of the `Predict_Ksat.R` [**here**](./Predict_Ksat.md) ). To run the models in your machine:
 1. Download at least these five items (save them in the same directory, check scripts to fix file locatoins in your machine.):
-  - a model of your choice and the [`USKsat_preProc.rds`](./Data/USKsat_preProc.rds) file from **[UC Merced Dash](https://doi.org/10.6071/M3T95H)**,
+  - a model of your choice and the [`USKsat_preProc.rds`](./Data/USKsat_preProc.rds) file from **[UC Merced Dash](https://doi.org/10.6071/M3T95H) or [from this Google Drive folder](https://drive.google.com/open?id=1a5TqHnB7G8mz8Y37y1RUnrX7BwgNV-Ra)**,
   - the [`Soil_Variable_Template.csv`](./Soil_Variable_Template.csv) file,
   - the [`Predict_Ksat.R`](./Predict_Ksat.R) script, and
   - the [`Function_Predict.R`](./Functions/Function_Predict.R) file from the [Functions](./Functions) folder.
