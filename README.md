@@ -11,9 +11,10 @@ Summaries of data preparation procedures for the machine learning from the USKSA
 ![](https://github.com/saraya209/soil_ksat/blob/master/imgs/GUI.png)
 
 I have developed an app with GUI based on shiny. To run the app locally is easy with RStudio editor:
-1. Download the `ptfapp` folder and all it's contents. **Download the models from [UC Merced Dash](https://doi.org/10.6071/M3T95H) and save in`ptf/Models` folder.** (If you prefer not to download all of the models, download only the ones you want from.)
-2. Open the RStudio project file `ptfapp.Rproj` in your machine. Open the `ui.R` script in your RStudio editor; RStudio will recognize the *Shiny* script and provide a **Run App** button (at the top of the editor).
-3. Before running the app for the first time, you may need to install the required R packages by running the following codes in the R console.
+1. Download the `ptfapp` folder and all it's contents. **Download the models from [This Google Drive link](https://drive.google.com/open?id=1dfkrvsmCL_tUm7QraovWXvaG0nQ3gULf)**
+2. Open the RStudio project file `ptfapp.Rproj` in your machine. 
+3. Open the `ui.R` script in your RStudio editor; RStudio will recognize the *Shiny* script and provide a **Run App** button (at the top of the editor).
+4. Clicking **Run App** button. Before running the app for the first time, you may need to install the required R packages by running the following codes in the R console.
 ```r
 # Shiny packages
 install.packages("shiny")
@@ -44,7 +45,7 @@ install.packages("readr")
   - Pre-processing data used to center and scale data created by `preProcess` function from [caret](https://cran.r-project.org/web/packages/caret/index.html) package ([USKsat_preProc.rds](./Data/USKsat_preProc.rds)).
 
 - [Pedotransfer Models](./ptfapp/Models)
-  - All hierarchy models and the pre-processing data. **Download the models from [UC Merced Dash](https://doi.org/10.6071/M3T95H). Models were too large for GitHub.**
+  - All hierarchy models and the pre-processing data. **Download the models from [UC Merced Dash](https://doi.org/10.6071/M3T95H) or [from this Google Drive folder](https://drive.google.com/open?id=1a5TqHnB7G8mz8Y37y1RUnrX7BwgNV-Ra). Models were too large for GitHub.**
 
 - Functions
   - [Functions_TextureRelated.R](./Functions/Functions_TextureRelated.R): Set of functions to assign textural class, calculate percentile sizes and complexed organic carbon.
