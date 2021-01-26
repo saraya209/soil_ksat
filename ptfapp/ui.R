@@ -22,6 +22,10 @@ library(readr)
 ui <- fluidPage(
   titlePanel(title = "Soil Saturated Hydraulic Conductivity Pedotransfer",
              windowTitle = "Ksat Pedotransfer"),
+  tags$a(href="https://doi.org/10.1029/2018WR024357", 
+         "Araya and Ghezzehei (2019) Water Resources Research",
+         target="_blank"),
+  
   # Separate header row
   tags$hr(style="border-color: #bfbfbf; border-top: 3px solid;"),
   
