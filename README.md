@@ -7,7 +7,7 @@ This repository contains machine learning based Pedotransfer models that predict
 
 Summaries of data preparation procedures for the machine learning from the USKSAT data is found [**here**](./USKsat_Data_Prep.md). Summary report of analysis we did on the partial effect of bulk density and organic carbon concentration on K<sub>s</sub> is found [**here**](./Structure_Partial_Effect.md).
 
-## Running Pedotransfer App
+## Running Pedotransfer App (Updated January 2021)
 ![](https://github.com/saraya209/soil_ksat/blob/master/imgs/GUI.png)
 
 I have developed an app with GUI based on shiny. To run the app locally is easy with RStudio editor:
