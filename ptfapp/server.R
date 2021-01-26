@@ -44,7 +44,7 @@ observe({
   loaded_m <<- eventReactive(input$load_model,{
     withProgress(message = "Loading Model", value = 1,
                  {
-                   m <- readRDS(file.path("Models",model.names[[input$select_model]]))
+                   m <- readRDS(file.path("Models", model.names[[input$select_model]]))
                    m
                  })
   })
@@ -55,14 +55,15 @@ observe({
     display
     if (display == "single_mode"){
       # Run Prediction if file and model exist
-      if (class(loaded_m()) =="gbm" & 
+      if (typeof(loaded_m()) == "list" & 
           !is.na(s.dt()$Clay) & 
           !is.na(s.dt()$Silt)){
         withProgress(message = 'Running PTF Model', value = 1, 
                      {
                        
-                       s_run_ptf_fun(input$select_model,
-                                     s.dt()) # Files named this may cause error
+                       run_ptf_fun(input$select_model,
+                                   s.dt(),     # Files named this may cause error
+                                   batch.predict = FALSE)
                        
                      })
       }
@@ -77,7 +78,8 @@ observe({
     if(display == "file_mode"){
       inFile <<- input$upload_file
       # Run Prediction if file and model exist
-      if (class(loaded_m()) =="gbm" & !is.null(inFile) ){
+      if (typeof(loaded_m()) =="list" & 
+          !is.null(inFile) ){
         
         withProgress(message = 'Running PTF Model', value = 1, 
                      {
@@ -86,7 +88,8 @@ observe({
                                                col_names  = TRUE,
                                                col_types = cols(.default = "d"))
                        run_ptf_fun(input$select_model,
-                                   u.dt)
+                                   u.dt,
+                                   batch.predict = TRUE)
                        
                      })
       }
@@ -155,7 +158,7 @@ observe({
 
   
   output$test_model_load <- renderText({
-    class(loaded_m()) =="gbm"
+    typeof(loaded_m()) %in% c("gbm", "list")
   })
   
   # Remark text output -----------------
